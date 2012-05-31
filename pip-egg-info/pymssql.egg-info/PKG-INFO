@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: pymssql
+Version: 2.0.0b1-dev-20111019
+Summary: A simple database interface to MS-SQL for Python.
+Home-page: http://pymssql.sourceforge.net
+Author: Damien Churchill
+Author-email: damoxc@gmail.com
+License: LGPL
+Description: A simple database interface to MS-SQL for Python.
+Platform: UNKNOWN

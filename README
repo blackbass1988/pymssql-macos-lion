@@ -1,0 +1,76 @@
+Building
+========
+
+	Windows
+	=======
+
+	To build pymssql on Windows you firstly must have:
+
+		* MinGW
+            * If you wish to use Visual C++ >= 2005 (or some equivalent compiler) then you will have
+              to compile FreeTDS yourself.
+		* Python >= 2.5 (From the Python website)
+		* Cython >= 0.13
+
+	and then you can simple run:
+
+		python setup.py build
+
+	which will build pymssql in the normal python fashion.
+
+	Unix
+	====
+
+	To build on Unix you must have:
+
+		* gcc
+		* python-dev >= 2.5
+		* Cython >= 0.13
+		* FreeTDS >= 0.82
+
+Testing
+=======
+
+*** ALL DATA IN TESTING DBS WILL BE DELETED !!!! ***
+
+You will need to install two additional packages for testing:
+
+    easy_install nose SQLAlchemy
+
+You should build the package with:
+
+    python setup.py develop
+
+You need to setup a tests.cfg file in tests/ with the correct DB connection
+information for your environement:
+
+    cd tests/
+    cp tests.cfg.tpl tests.cfg
+    vim|emacs|notepad tests.cfg
+
+To run the tests:
+
+    cd tests/
+    nosetests
+
+Which will go through and run all the tests with the settings from the DEFAULT
+section of tests.cfg.
+
+To run with a different tests.cfg section:
+
+    nosetests --pymssql-section=<secname>
+
+example:
+
+    nosetests --pymssql-section=AllTestsWillRun
+
+to avoid slow tests:
+
+    nosetests -a '!slow'
+
+to select specific tests to run:
+
+    nosetests test_types.py
+    nosetests test_types.py test_sprocs.py
+    nosetests test_types.py:TestTypes
+    nosetests test_types.py:TestTypes.test_image
